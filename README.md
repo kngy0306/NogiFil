@@ -1,4 +1,6 @@
-# React_Laravel_MySQL_Nginx_Docker 環境
+# NogiFil
+
+YouTubeチャンネル「乃木坂配信中」の動画を、推しでフィルタリング
 
 ## コンテナ起動
 
