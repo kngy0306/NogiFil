@@ -1,0 +1,40 @@
+# front
+# dependencies
+front/node_modules
+front/.pnp
+front/.pnp.js
+
+# testing
+front/coverage
+
+# production
+front/build
+
+# misc
+front/.DS_Store
+front/.env.local
+front/.env.development.local
+front/.env.test.local
+front/.env.production.local
+
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+
+
+# api
+api/node_modules
+api/public/hot
+api/public/storage
+api/storage/*.key
+api/vendor
+api/.env
+api/.env.backup
+api/.phpunit.result.cache
+api/docker-compose.override.yml
+api/Homestead.json
+api/Homestead.yaml
+api/npm-debug.log
+api/yarn-error.log
+api/.idea
+api/.vscode
