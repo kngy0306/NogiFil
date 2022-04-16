@@ -10,10 +10,10 @@ docker-compose up -d --build
 
 ## Laravel
 
-プロジェクト作成
+プロジェクト作成（version 8.x）
 
 ```sh
-docker-compose exec api composer create-project laravel/laravel .
+docker-compose exec api composer create-project --prefer-dist laravel/laravel sample "8.*"
 ```
 
 `localhost:80`にアクセスするとLaravelのウェルカムページが表示される
