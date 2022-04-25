@@ -1,7 +1,8 @@
 import React from 'react'
+import { Index } from './pages/Index'
 
 function App() {
-  return <div className="App">Hello!</div>
+  return <Index />
 }
 
 export default App
