@@ -13,6 +13,9 @@ RUN apt-get update && \
 		vim \
 		autoconf gcc g++ make
 
+# PDO
+RUN docker-php-ext-install pdo_mysql
+
 # config file COPY
 COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY conf/docker.conf /usr/local/etc/php-fpm.d/docker.conf

@@ -13,12 +13,10 @@ class CreateVideoTagMstTable extends Migration
      */
     public function up()
     {
-        // TODO: reference設定
-        // bigIntegerの見直し
         Schema::create('video_tag_mst', function (Blueprint $table) {
             $table->id();
-            $table->string('thumbnail_url', 100);
-            $table->bigInteger('tag_id')->unsigned();
+            $table->string('channel_id', 32);
+            $table->integer('tag_id')->unsigned();
             $table->timestamps();
         });
     }

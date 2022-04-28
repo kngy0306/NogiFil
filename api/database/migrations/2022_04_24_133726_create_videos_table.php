@@ -19,8 +19,8 @@ class CreateVideosTable extends Migration
             $table->text('title');
             $table->text('description');
             $table->string('thumbnail_url', 100);
-            $table->bigInteger('thumbnail_height')->unsigned();
-            $table->bigInteger('thumbnail_wight')->unsigned();
+            $table->integer('thumbnail_height')->unsigned();
+            $table->integer('thumbnail_wight')->unsigned();
             $table->timestamp('published_at');
             $table->timestamps();
         });
