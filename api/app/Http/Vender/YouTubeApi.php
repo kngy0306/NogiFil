@@ -20,16 +20,19 @@ class YoutubeApi
     /**
      * /v3/searchを呼び出す
      *
-     * @param string $searchWord
+     * @param string $nextPageToken = ''
      * @return array
      */
-    public function searchList(String $searchWord)
+    public function searchList(String $nextPageToken = '')
     {
         $r = $this->youtube->search->listSearch('snippet', array(
           'channelId' => 'UCfvohDfHt1v5N8l3BzPRsWQ',
           'maxResults' => 2,
-          'order' => 'viewCount',
+          'order' => 'date',
+          'pageToken' => $nextPageToken,
         ));
+
+        if($r->nextPageToken) info("nextPageToken: " . $r->nextPageToken);
 
         return $r->items;
     }

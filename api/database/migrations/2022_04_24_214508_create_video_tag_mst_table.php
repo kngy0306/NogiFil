@@ -15,7 +15,7 @@ class CreateVideoTagMstTable extends Migration
     {
         Schema::create('video_tag_mst', function (Blueprint $table) {
             $table->id();
-            $table->string('channel_id', 32);
+            $table->string('video_id', 64);
             $table->integer('tag_id')->unsigned();
             $table->timestamps();
         });
