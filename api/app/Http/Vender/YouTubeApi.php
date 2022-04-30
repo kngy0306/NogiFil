@@ -5,7 +5,7 @@ namespace App\Http\Vender;
 use Google_Client;
 use Google_Service_YouTube;
 
-class YoutubeApi
+class YouTubeApi
 {
     private $client;
     private $youtube;
