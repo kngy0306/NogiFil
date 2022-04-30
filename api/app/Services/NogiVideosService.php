@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Vender\YoutubeApi;
+use App\Http\Vender\YouTubeApi;
 use App\Models\Tag;
 use App\Models\Video;
 use App\Models\VideoTagMst;
@@ -21,7 +21,7 @@ final class NogiVideosService
    */
   public function fetchVideos(string $nextPageToken = '', int $maxResults, string $q = ''): array
   {
-    $client = new YoutubeApi();
+    $client = new YouTubeApi();
     $searchListArray = $client->searchList($nextPageToken, $maxResults, $q);
 
     // YouTubeAPI
