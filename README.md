@@ -87,6 +87,53 @@ heroku へプッシュ
 git subtree push --prefix api/ heroku master
 ```
 
+MySQL の設定
+
+```sh
+# mysql://(DB_USERNAME):(DB_PASSWORD)@(DB_HOST)/(DB_DATABASE)?reconnect=true
+
+$ heroku config:set DB_CONNECTION=mysql
+$ heroku config:set DB_HOST=(DB_HOST)
+$ heroku config:set DB_PORT=3306
+$ heroku config:set DB_DATABASE=(DB_DATABASE)
+$ heroku config:set DB_USERNAME=(DB_USERNAME)
+$ heroku config:set DB_PASSWORD=(DB_PASSWORD)
+```
+
+以下ファイルを編集
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+}
+```
+
 ### 参考
 
 【Heroku】Laravel+MySQL で作成したアプリを公開【完全版】  
