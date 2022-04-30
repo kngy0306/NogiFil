@@ -20,16 +20,24 @@ class YoutubeApi
     /**
      * /v3/searchを呼び出す
      *
-     * @param string $searchWord
+     * @param string $nextPageToken = ''
+     * @param int $maxResults = 50
+     * @param string $q = ''
      * @return array
      */
-    public function searchList(String $searchWord)
+    public function searchList(string $nextPageToken = '', int $maxResults = 50, string $q = ''): array
     {
         $r = $this->youtube->search->listSearch('snippet', array(
           'channelId' => 'UCfvohDfHt1v5N8l3BzPRsWQ',
-          'maxResults' => 2,
-          'order' => 'viewCount',
+          'maxResults' => $maxResults,
+          'order' => 'date',
+          'pageToken' => $nextPageToken,
+          'q' => $q,
         ));
+
+        info("response from YouTubeAPI " . print_r($r, true));
+        
+        if($r->nextPageToken) info("nextPageToken: 【" . $r->nextPageToken . "】 " . date('Y/m/d H:i:s'));
 
         return $r->items;
     }
@@ -40,7 +48,7 @@ class YoutubeApi
      * @param string $id
      * @return array
      */
-    public function videosList(String $id)
+    public function videosList(String $id): array
     {
         $r = $this->youtube->videos->listVideos('snippet', array(
           'id' => $id,

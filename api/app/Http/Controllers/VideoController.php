@@ -3,57 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Http\Vender\YoutubeApi;
+use App\Models\Tag;
+use App\Models\Video;
+use App\Models\VideoTagMst;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VideoController extends Controller
 {
+    /**
+     * 動画一覧を取得する
+     */
     public function index(Request $request)
     {
-        // $client = new YoutubeApi();
-        // $searchList = $client->searchList('乃木坂46');
+        $videos = DB::table('videos')
+                    ->leftJoin('video_tag_mst', 'videos.video_id', '=', 'video_tag_mst.video_id')
+                    ->leftJoin('tags', 'video_tag_mst.tag_id', '=', 'tags.id')
+                    ->select('videos.video_id', 'videos.title', 'video_tag_mst.id', 'tags.tag_name')
+                    ->get();
 
-        // $responseArray = [];
-        // foreach ($searchList as $index => $res) {
-        //     array_push($responseArray, $res);
-        //     array_push($responseArray, "============");
-        //     $video = $client->videosList($res->id->videoId);
-        //     array_push($responseArray, $video);
-        // }
+        $videoId = '';
+        $responseData = [];
+        foreach ($videos as $videoIndex => $videoData) {
+            if ($videoData->video_id !== $videoId) {
+                $videoId = $videoData->video_id;
+                $responseData[$videoId] = [
+                    'title' => $videoData->title,
+                    'tags' => [$videoData->id => $videoData->tag_name],
+                ];
+                continue;
+            }
 
-        // return response()->json($responseArray);
+            $responseData[$videoId]['tags'][$videoData->id] = $videoData->tag_name;
+        }
 
-        $responseArray = [];
-
-        array_push($responseArray, [
-            'title' => '【公式】「乃木坂工事中」# 319「第3回 頭NO王決定戦 前編」2021.07.25 OA',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/-HSuyOOcJdY/maxresdefault.jpg',
-            'video_id' => '-HSuyOOcJdY',
-            'published_at' => '2021-07-25T15:28:46Z',
-        ]);
-
-        array_push($responseArray, [
-            'title' => '【公式】「乃木坂工事中」# 318「上半期 乃木坂46反省大賞」2021.07.18 OA',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/ZlFMLj_BRwk/maxresdefault.jpg',
-            'video_id' => '-HSuyOOcJdY',
-            'published_at' => '2021-07-18T15:58:49Z',
-        ]);
-
-        return response()->json($responseArray);
+        return response()->json($responseData);
     }
 
-    public function getYoutubeList(Request $request)
+    /**
+     * タグから動画を取得する
+     */
+    public function getVideosByTagname(Request $request, $tagName)
     {
-        // $client = new YoutubeApi();
-        // $searchList = $client->searchList('乃木坂46');
+        if (empty($tagName)) $this->index($request);
 
-        // $responseArray = [];
-        // foreach ($searchList as $index => $res) {
-        //     array_push($responseArray, $res);
-        //     array_push($responseArray, "============");
-        //     $video = $client->videosList($res->id->videoId);
-        //     array_push($responseArray, $video);
-        // }
+        $videos = DB::table('tags')
+                    ->join('video_tag_mst', 'tags.id', '=', 'video_tag_mst.tag_id')
+                    ->join('videos', 'video_tag_mst.video_id', '=', 'videos.video_id')
+                    ->select('videos.video_id', 'videos.title', 'videos.thumbnail_url')
+                    ->where('tags.tag_name', '=', $tagName)
+                    ->get();
 
-        // return response()->json($responseArray);
+        return response()->json($videos);
     }
 }

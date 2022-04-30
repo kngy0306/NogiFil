@@ -15,12 +15,12 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string('channel_id', 32);
+            $table->string('video_id', 64);
             $table->text('title');
             $table->text('description');
             $table->string('thumbnail_url', 100);
             $table->integer('thumbnail_height')->unsigned();
-            $table->integer('thumbnail_wight')->unsigned();
+            $table->integer('thumbnail_width')->unsigned();
             $table->timestamp('published_at');
             $table->timestamps();
         });
