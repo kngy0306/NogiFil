@@ -147,3 +147,47 @@ https://mrkmyki.com/laravel%E3%82%92heroku%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E
 
 環境構築からデプロイまで一通りやってみる。  
 https://www.grassrunners.net/blog/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%8B%E3%82%89%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%BE%E3%81%A7%E4%B8%80%E9%80%9A%E3%82%8A%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B%E3%80%82/
+
+## mysqldump
+
+```sh
+mysqldump -u nogi_fil -ppassword --no-tablespaces --databases nogi_fil > dump.sql
+```
+
+## heroku の MySQL へログイン
+
+```sh
+mysql -u (DB_USERNAME) -h (DB_HOST) -p(DB_PASSWORD)
+```
+
+collation:utf8mb4_0900_ai_ci
+
+```sql
+mysql> SELECT @@character_set_database, @@collation_database;
++--------------------------+----------------------+
+| @@character_set_database | @@collation_database |
++--------------------------+----------------------+
+| latin1                   | latin1_swedish_ci    |
++--------------------------+----------------------+
+1 row in set (0.19 sec)
+
+mysql> show variables like 'character\_set\_%';
++--------------------------+--------+
+| Variable_name            | Value  |
++--------------------------+--------+
+| character_set_client     | latin1 |
+| character_set_connection | latin1 |
+| character_set_database   | latin1 |
+| character_set_filesystem | binary |
+| character_set_results    | latin1 |
+| character_set_server     | latin1 |
+| character_set_system     | utf8   |
++--------------------------+--------+
+7 rows in set (0.18 sec)
+```
+
+charset, collation の変更
+
+```sql
+ALTER DATABASE <db_name> CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
