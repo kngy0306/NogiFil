@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { apiServer } from '../api/YoutubeAPIUtils'
-
-type Video = {
-  title: string
-  thumbnail_url: string
-  video_id: string
-}
+import { Video } from '../types/VideoType'
 
 const getVideoList = async (memberName: string) => {
   const res = await apiServer.get(memberName)
@@ -13,12 +8,12 @@ const getVideoList = async (memberName: string) => {
 }
 
 export const Main: React.FC = () => {
-  const baseUrl = 'https://www.youtube.com/watch?v='
+  const baseUrl = process.env.REACT_APP_YOUTUBE_BASE_URL
   const [videoList, setVideoList] = useState<Video[]>([])
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    const res = getVideoList('賀喜遥香')
+    const res = getVideoList('秋元真夏')
     res
       .then((Obj) => {
         console.log(Obj.data)
@@ -36,7 +31,10 @@ export const Main: React.FC = () => {
         ? videoList.map((video) => {
             return (
               <div key={video.video_id}>
-                <a href={baseUrl + video.video_id}>
+                <a
+                  href={baseUrl + video.video_id}
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <h3>{video.title}</h3>
                   <img src={video.thumbnail_url} alt="thumbnail" width="50%" />
                 </a>
