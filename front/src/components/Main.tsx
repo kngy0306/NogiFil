@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Header } from './Header'
 import { Body } from './Body'
-
 import { apiServer } from '../api/YoutubeAPIUtils'
 import { Video } from '../types/VideoType'
 import { Footer } from './Footer'
@@ -32,7 +31,7 @@ export const Main: React.FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <Header videoListHandle={videoListHandle} />
       <Body videoList={videoList} message={message} />
       <Footer />
