@@ -1,47 +1,41 @@
 import React, { useEffect, useState } from 'react'
+import { Header } from './Header'
+import { Body } from './Body'
+
 import { apiServer } from '../api/YoutubeAPIUtils'
 import { Video } from '../types/VideoType'
-
-const getVideoList = async (memberName: string) => {
-  const res = await apiServer.get(memberName)
-  return res
-}
+import { Footer } from './Footer'
 
 export const Main: React.FC = () => {
-  const baseUrl = process.env.REACT_APP_YOUTUBE_BASE_URL
   const [videoList, setVideoList] = useState<Video[]>([])
   const [message, setMessage] = useState('')
 
-  useEffect(() => {
-    const res = getVideoList('秋元真夏')
+  const videoListHandle = (memberName: string) => {
+    getVideoList(memberName)
+  }
+
+  const getVideoList = (memberName: string): void => {
+    const res = apiServer.get(memberName)
     res
-      .then((Obj) => {
-        console.log(Obj.data)
-        setVideoList(Obj.data)
+      .then((res) => {
+        setVideoList(res.data)
+        setMessage('')
       })
       .catch((err) => {
         console.error(err)
         setMessage('動画が見つかりませんでした。')
       })
+  }
+
+  useEffect(() => {
+    getVideoList('賀喜遥香')
   }, [])
 
   return (
     <div>
-      {message === ''
-        ? videoList.map((video) => {
-            return (
-              <div key={video.video_id}>
-                <a
-                  href={baseUrl + video.video_id}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <h3>{video.title}</h3>
-                  <img src={video.thumbnail_url} alt="thumbnail" width="50%" />
-                </a>
-              </div>
-            )
-          })
-        : message}
+      <Header videoListHandle={videoListHandle} />
+      <Body videoList={videoList} message={message} />
+      <Footer />
     </div>
   )
 }
