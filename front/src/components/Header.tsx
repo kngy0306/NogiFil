@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export const Header: React.FC<{
   videoListHandle: (memberName: string) => void
-}> = ({ videoListHandle }) => {
+  themeHandle: () => void
+}> = ({ videoListHandle, themeHandle }) => {
   const memberList = ['賀喜遥香', '秋元真夏']
   const [value, setValue] = useState('default')
 
@@ -10,6 +11,10 @@ export const Header: React.FC<{
     const memberName = event.target.value
     setValue(memberName)
     videoListHandle(memberName)
+  }
+
+  const setTheme = () => {
+    themeHandle()
   }
 
   return (
@@ -21,7 +26,9 @@ export const Header: React.FC<{
           </a>
         </div>
         <div className="flex-none">
-          <button className="btn btn-square btn-ghost">🌔</button>
+          <button className="btn btn-square btn-ghost" onClick={setTheme}>
+            🌔
+          </button>
         </div>
       </div>
 

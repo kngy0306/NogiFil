@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Main } from '../components/Main'
 
 export const Index: React.FC = () => {
+  const [lightTheme, setLightTheme] = useState(true)
+
+  const themeHandle = () => {
+    const flag = lightTheme
+    setLightTheme(!flag)
+  }
+
   return (
-    <>
-      <Main />
-    </>
+    <div data-theme={lightTheme ? 'light' : 'dark'} className="min-h-screen">
+      <Main themeHandle={themeHandle} />
+    </div>
   )
 }
