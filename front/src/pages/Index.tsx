@@ -4,9 +4,8 @@ import { Main } from '../components/Main'
 export const Index: React.FC = () => {
   const [lightTheme, setLightTheme] = useState(true)
 
-  const themeHandle = () => {
-    const flag = lightTheme
-    setLightTheme(!flag)
+  const themeHandle = (theme: boolean) => {
+    setLightTheme(theme)
   }
 
   return (

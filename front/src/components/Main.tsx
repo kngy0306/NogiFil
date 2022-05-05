@@ -5,7 +5,7 @@ import { apiServer } from '../api/YoutubeAPIUtils'
 import { Video } from '../types/VideoType'
 import { Footer } from './Footer'
 
-export const Main: React.FC<{ themeHandle: () => void }> = ({
+export const Main: React.FC<{ themeHandle: (theme: boolean) => void }> = ({
   themeHandle,
 }) => {
   const [videoList, setVideoList] = useState<Video[]>([])
