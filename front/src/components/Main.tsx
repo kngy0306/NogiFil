@@ -29,7 +29,7 @@ export const Main: React.FC<{ themeHandle: () => void }> = ({
   }
 
   useEffect(() => {
-    getVideoList('賀喜遥香')
+    getVideoList('乃木坂46')
   }, [])
 
   return (

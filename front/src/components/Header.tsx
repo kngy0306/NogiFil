@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { memberList } from '../memberList/member'
 
 export const Header: React.FC<{
   videoListHandle: (memberName: string) => void
   themeHandle: () => void
 }> = ({ videoListHandle, themeHandle }) => {
-  const memberList = ['賀喜遥香', '秋元真夏']
   const [value, setValue] = useState('default')
 
   const selectMember = (event: React.ChangeEvent<HTMLSelectElement>) => {
