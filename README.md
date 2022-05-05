@@ -1,8 +1,10 @@
 # NogiFil
 
-YouTube チャンネル「乃木坂配信中」の動画を、推しでフィルタリング
+YouTube チャンネル「乃木坂配信中」で公開されている動画を、メンバーでフィルタリングし表示するアプリケーションです。
 
-## コンテナ起動
+<img width="70%" src="https://user-images.githubusercontent.com/57553474/166925938-796257fc-242d-4988-a3c9-4196a7bf61ba.png" />
+
+## コンテナ立ち上げ
 
 ```sh
 docker-compose up -d --build
