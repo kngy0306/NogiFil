@@ -5,9 +5,7 @@ import { apiServer } from '../api/YoutubeAPIUtils'
 import { Video } from '../types/VideoType'
 import { Footer } from './Footer'
 
-export const Main: React.FC<{ themeHandle: (theme: boolean) => void }> = ({
-  themeHandle,
-}) => {
+export const Main: React.FC = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const [message, setMessage] = useState('')
 
@@ -34,7 +32,7 @@ export const Main: React.FC<{ themeHandle: (theme: boolean) => void }> = ({
 
   return (
     <div className="container m-auto">
-      <Header videoListHandle={videoListHandle} themeHandle={themeHandle} />
+      <Header videoListHandle={videoListHandle} />
       <Body videoList={videoList} message={message} />
       <Footer />
     </div>

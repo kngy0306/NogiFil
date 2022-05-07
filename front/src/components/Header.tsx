@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { memberList } from '../memberList/member'
+import { ThemeContext } from '../pages/Index'
 
 export const Header: React.FC<{
   videoListHandle: (memberName: string) => void
-  themeHandle: (theme: boolean) => void
-}> = ({ videoListHandle, themeHandle }) => {
+}> = ({ videoListHandle }) => {
   const [value, setValue] = useState('default')
-  const [lightTheme, setLightTheme] = useState(true)
+  const { lightTheme, setLightTheme } = useContext(ThemeContext)
 
   const selectMember = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const memberName = event.target.value
@@ -15,9 +15,9 @@ export const Header: React.FC<{
   }
 
   const changeTheme = () => {
-    const theme = !lightTheme
-    themeHandle(theme)
-    setLightTheme(theme)
+    const newTheme = !lightTheme
+    setLightTheme(newTheme)
+    setLightTheme(newTheme)
   }
 
   return (
