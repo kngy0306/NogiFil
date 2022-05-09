@@ -8,11 +8,6 @@ import { Footer } from './Footer'
 export const Main: React.FC = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const [message, setMessage] = useState('')
-
-  const videoListHandle = (memberName: string) => {
-    getVideoList(memberName)
-  }
-
   const getVideoList = (memberName: string): void => {
     const res = apiServer.get(memberName)
     res
@@ -24,6 +19,10 @@ export const Main: React.FC = () => {
         console.error(err)
         setMessage('動画が見つかりませんでした。')
       })
+  }
+
+  const videoListHandle = (memberName: string) => {
+    getVideoList(memberName)
   }
 
   useEffect(() => {

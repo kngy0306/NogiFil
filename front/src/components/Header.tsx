@@ -17,7 +17,6 @@ export const Header: React.FC<{
   const changeTheme = () => {
     const newTheme = !lightTheme
     setLightTheme(newTheme)
-    setLightTheme(newTheme)
   }
 
   return (
