@@ -4,6 +4,9 @@ module.exports = {
     extend: {
       width: { card: '30rem' },
     },
+    scale: {
+      103: '1.03',
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {

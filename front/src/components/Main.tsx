@@ -7,17 +7,22 @@ import { Footer } from './Footer'
 
 export const Main: React.FC = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
-  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const getVideoList = (memberName: string): void => {
     const res = apiServer.get(memberName)
     res
       .then((res) => {
-        setVideoList(res.data)
-        setMessage('')
+        const data: Video[] = res.data
+        if (!data.length) {
+          setErrorMessage('動画が見つかりませんでした。')
+        } else {
+          setVideoList(res.data)
+          setErrorMessage('')
+        }
       })
       .catch((err) => {
         console.error(err)
-        setMessage('動画が見つかりませんでした。')
+        setErrorMessage('動画が見つかりませんでした。')
       })
   }
 
@@ -30,9 +35,9 @@ export const Main: React.FC = () => {
   }, [])
 
   return (
-    <div className="container m-auto">
+    <div className="container m-auto flex flex-col min-h-screen">
       <Header videoListHandle={videoListHandle} />
-      <Body videoList={videoList} message={message} />
+      <Body videoList={videoList} errorMessage={errorMessage} />
       <Footer />
     </div>
   )
