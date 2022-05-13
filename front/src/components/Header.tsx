@@ -15,6 +15,7 @@ export const Header: React.FC<{
   }
 
   const changeTheme = () => {
+    localStorage.setItem('lightTheme', `${!lightTheme}`)
     const newTheme = !lightTheme
     setLightTheme(newTheme)
   }
