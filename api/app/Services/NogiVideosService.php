@@ -47,6 +47,14 @@ final class NogiVideosService
             $value = trim($value);
         });
 
+        $memberTagName = ["乃木坂46"];
+        $member = config("constants.member");
+        array_map(function($value) use ($member, &$memberTagName) {
+          if (in_array($value, $member)) {
+            array_push($memberTagName, $value);
+          }
+        }, $tags);
+
         $snippetArray[$index] = [
             'video_id' => $videos[0]->id,
             'title' => $videos[0]->snippet->title,
@@ -56,7 +64,7 @@ final class NogiVideosService
             'thumbnail_width' => $videos[0]->snippet->thumbnails->high->width,
             'published_at' => $videos[0]->snippet->publishedAt,
             'tags' => [
-                $tags
+                $memberTagName
             ],
         ];  
     }
