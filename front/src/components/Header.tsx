@@ -24,9 +24,11 @@ export const Header: React.FC<{
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <p className="pl-3 font-bold normal-case text-xl text-purple-500">
+          <a
+            href="/"
+            className="pl-3 font-bold normal-case text-xl text-purple-500">
             NOGI FIL
-          </p>
+          </a>
         </div>
         <div className="flex-none">
           <button className="btn btn-square btn-ghost" onClick={changeTheme}>
