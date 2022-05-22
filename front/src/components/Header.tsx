@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import { memberList } from '../memberList/member'
 import { ThemeContext } from '../pages/Index'
 
@@ -14,11 +14,11 @@ export const Header: React.FC<{
     videoListHandle(memberName)
   }
 
-  const changeTheme = () => {
+  const changeTheme = useCallback(() => {
     localStorage.setItem('lightTheme', `${!lightTheme}`)
     const newTheme = !lightTheme
     setLightTheme(newTheme)
-  }
+  }, [lightTheme, setLightTheme])
 
   return (
     <div>
