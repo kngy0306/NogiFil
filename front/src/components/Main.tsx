@@ -8,6 +8,7 @@ import { Footer } from './Footer'
 export const Main: React.FC = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const [errorMessage, setErrorMessage] = useState('')
+
   const getVideoList = (memberName: string): void => {
     const res = apiServer.get(memberName)
     res
