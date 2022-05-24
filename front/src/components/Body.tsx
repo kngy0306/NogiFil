@@ -15,7 +15,7 @@ export const Body: React.FC<{ videoList: Video[]; errorMessage: string }> = ({
   }
 
   return (
-    <div className="flex justify-center flex-wrap w-full border-opacity-50 m-auto my-10 p-4 flex-grow xl:w-[1024px] 2xl:w-[1536px]">
+    <div className="flex justify-center flex-wrap flex-grow w-full border-opacity-50 m-auto my-10 p-4 xl:w-[1024px] 2xl:w-[1536px]">
       {errorMessage === '' ? (
         videoList.map((video) => {
           return (
