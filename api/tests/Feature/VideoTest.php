@@ -63,4 +63,24 @@ class VideoTest extends TestCase
             array_keys($video),
         );
     }
+
+    /**
+     * @test
+     * 
+     * 登録している全メンバーの動画データをGETメソッドで取得
+     */
+    public function api_video_tagnameでGETメソッドで取得するデータ形式テスト()
+    {
+        $memberList = config("constants.member");
+
+        foreach ($memberList as $member) {
+            $response = $this->get('api/video/' . $member);
+            $videos = $response->json();
+        $video = $videos[0];
+        $this->assertSame(
+            ['video_id', 'title', 'thumbnail_url'],
+            array_keys($video),
+        );
+        }
+    }
 }
