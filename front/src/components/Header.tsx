@@ -42,10 +42,12 @@ export const Header: React.FC<{
           「
           <a
             href="https://www.youtube.com/c/nogizakahaishinchu/videos"
-            className="text-purple-600">
+            className="text-purple-500">
             乃木坂配信中
           </a>
           」のチャンネルで公開されている動画から、推しメンを選択してフィルタリングします。
+          <br />
+          ※動画をタップするとYouTubeへ移動します。
         </div>
         <select
           className="select select-primary w-full max-w-xs m-auto my-5"
