@@ -23,4 +23,28 @@ final class NogiVideosUseCase
 
     return $res;
   }
+
+  public function runByManual(string $video_id, string $title, string $thumbnail_url, string $published_at, array $tags): bool
+  {
+    // tagを配列へ
+    $videoTag[0] = $tags;
+
+    // DB登録用の配列を作成
+    $videoArray = [];
+    array_push($videoArray, [
+      "video_id" => $video_id,
+      "title" => $title,
+      "description" => $title,
+      "thumbnail_url" => $thumbnail_url,
+      "thumbnail_height" => 360,
+      "thumbnail_width" => 480,
+      "published_at" => $published_at,
+      "tags" => $videoTag,
+    ]);
+
+    // DB登録
+    $res = $this->service->insertVideos($videoArray);
+
+    return $res;
+  }
 }
