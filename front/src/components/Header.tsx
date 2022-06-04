@@ -26,7 +26,7 @@ export const Header: React.FC<{
         <div className="flex-1">
           <a
             href="/"
-            className="pl-3 font-bold normal-case text-xl text-purple-500">
+            className="pl-3 font-bold normal-case text-xl text-purple-500 hover:text-purple-600">
             NOGI FIL
           </a>
         </div>
@@ -42,7 +42,7 @@ export const Header: React.FC<{
           「
           <a
             href="https://www.youtube.com/c/nogizakahaishinchu/videos"
-            className="text-purple-500">
+            className="text-purple-500 hover:text-purple-600">
             乃木坂配信中
           </a>
           」のチャンネルで公開されている動画から、推しメンを選択してフィルタリングします。
