@@ -42,10 +42,12 @@ export const Header: React.FC<{
           「
           <a
             href="https://www.youtube.com/c/nogizakahaishinchu/videos"
-            className="text-purple-500 hover:text-purple-600">
+            className="text-purple-500 hover:text-purple-600"
+            target="_blank"
+            rel="noopener noreferrer">
             乃木坂配信中
           </a>
-          」のチャンネルで公開されている動画から、推しメンを選択してフィルタリングします。
+          」のチャンネルで公開されている動画を、メンバーを選択して検索します。
           <br />
           ※動画をタップするとYouTubeへ移動します。
         </div>
