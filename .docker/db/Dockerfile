@@ -1,4 +1,4 @@
-FROM mysql:8.0
+FROM mysql:8.0-debian
 
 RUN apt-get clean && \
     apt-get update && \
