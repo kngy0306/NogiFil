@@ -19,6 +19,8 @@
     "react-dom": "^18.0.0",
     "react-helmet-async": "^1.3.0",
     "react-scripts": "5.0.1",
+    "safe-compare": "^1.1.4",
+    "static-auth": "^2.1.2",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
