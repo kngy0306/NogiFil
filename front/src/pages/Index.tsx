@@ -16,8 +16,7 @@ export const Index: React.FC = () => {
   return (
     <ThemeContext.Provider value={{ lightTheme, setLightTheme }}>
       <div data-theme={lightTheme ? 'light' : 'dark'} className="min-h-screen">
-        {/* <Main /> */}
-        APIサーバー以降中のため現在使用できません🙇
+        <Main />
       </div>
     </ThemeContext.Provider>
   )
