@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Header } from './Header'
 import { Body } from './Body'
-import { apiServer } from '../api/YoutubeAPIUtils'
+// import { apiServer } from '../api/YoutubeAPIUtils'
 import { Video } from '../types/VideoType'
 import { Footer } from './Footer'
+import axios from 'axios'
 
 export const Main: React.FC = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const [errorMessage, setErrorMessage] = useState('')
 
   const getVideoList = (memberName: string): void => {
-    const res = apiServer.get(memberName)
-    res
+    axios
+      .get(`https://www.rra-app.site/api/video/${memberName}`)
       .then((res) => {
         const data: Video[] = res.data
         if (!data.length) {
