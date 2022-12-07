@@ -13,4 +13,10 @@ https://nogi-fil-kngy0306.vercel.app/
 - PHP
 - Laravel
 
+Insfrastructure
+
+- Vercel
+- PlanetScale
+- AWS EC2
+
 ![struct](https://user-images.githubusercontent.com/57553474/167066191-358b1047-0736-4e8e-bd41-a9d8e611ab67.png)
