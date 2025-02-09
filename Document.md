@@ -1,7 +1,9 @@
+# 開発手順
+
 ## コンテナ立ち上げ
 
 ```sh
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## Laravel
@@ -9,7 +11,7 @@ docker-compose up -d --build
 プロジェクト作成（version 8.x）
 
 ```sh
-docker-compose exec api composer create-project --prefer-dist laravel/laravel sample "8.*"
+docker compose exec api composer create-project --prefer-dist laravel/laravel sample "8.*"
 ```
 
 `localhost:80`にアクセスすると Laravel のウェルカムページが表示される
@@ -21,11 +23,11 @@ docker-compose exec api composer create-project --prefer-dist laravel/laravel sa
 プロジェクト作成
 
 ```sh
-docker-compose exec front npx create-react-app . --template typescript
+docker compose exec front npx create-react-app . --template typescript
 ```
 
 ```sh
-docker-compose exec front yarn start
+docker compose exec front yarn start
 ```
 
 `localhost:3000`にアクセスすると React のウェルカムページが表示される
@@ -132,16 +134,16 @@ class AppServiceProvider extends ServiceProvider
 
 ### 参考
 
-【Heroku】Laravel+MySQL で作成したアプリを公開【完全版】  
+【Heroku】Laravel+MySQL で作成したアプリを公開【完全版】
 https://chigusa-web.com/blog/heroku-laravel/
 
-Heroku スターターガイド (Laravel)  
+Heroku スターターガイド (Laravel)
 https://devcenter.heroku.com/ja/articles/getting-started-with-laravel
 
-Laravel を Heroku にデプロイするまでに最低限やる事。  
+Laravel を Heroku にデプロイするまでに最低限やる事。
 https://mrkmyki.com/laravel%E3%82%92heroku%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%80%82
 
-環境構築からデプロイまで一通りやってみる。  
+環境構築からデプロイまで一通りやってみる。
 https://www.grassrunners.net/blog/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%8B%E3%82%89%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%BE%E3%81%A7%E4%B8%80%E9%80%9A%E3%82%8A%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B%E3%80%82/
 
 ## mysqldump

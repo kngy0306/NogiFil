@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2.27-fpm
 
 ENV TZ Asia/Tokyo
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -25,7 +25,7 @@ COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
-# ENTRYPOINT ["docker-entrypoint.sh"]
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 WORKDIR /app
