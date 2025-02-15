@@ -1,10 +1,10 @@
 # NogiFil
 
-This is an application to filter and display videos on the YouTube channel, "[乃木坂配信中](https://www.youtube.com/c/nogizakahaishinchu)" by member's name.
+[乃木坂配信中](https://www.youtube.com/c/nogizakahaishinchu)というYouTubeチャンネルの動画から、検索したメンバーが出演している動画をフィルタリングして表示するアプリケーション。
 
-<img width="100%" src="https://user-images.githubusercontent.com/57553474/166925938-796257fc-242d-4988-a3c9-4196a7bf61ba.png" />
+<img width="80%" src="https://github.com/user-attachments/assets/b59793d6-008b-45c6-8b68-bd21094b98cf" />
 
-![nogifilのデモ動画](https://github.com/user-attachments/assets/b59793d6-008b-45c6-8b68-bd21094b98cf)
+<img width="80%" src="https://user-images.githubusercontent.com/57553474/166925938-796257fc-242d-4988-a3c9-4196a7bf61ba.png" />
 
 ## Technology
 
